@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-dark-900: #0d0d0d;
+  --bg-dark-800: #171717;
+  --bg-dark-700: #212121;
+  --bg-dark-600: #2f2f2f;
+  --text-100: #ececec;
+  --text-200: #b4b4b4;
+  --text-300: #8e8ea0;
+  --accent: #10a37f;
+  --accent-hover: #1a7f64;
+  --sidebar-width: 260px;
+  --border-light: rgba(255, 255, 255, 0.1);
+  --bubble-user: #2f2f2f;
+  --input-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark-800);
+  color: var(--text-100);
+  height: 100vh;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+#root {
+  height: 100%;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-dark-900);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-right: 1px solid var(--border-light);
+}
+
+.new-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  color: var(--text-100);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.2s;
+}
+
+.new-chat-btn:hover {
+  background: var(--bg-dark-700);
+}
+
+.sessions-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-200);
+  font-size: 14px;
+  transition: all 0.2s;
+  position: relative;
+  /* Support absolute children */
+  /* overflow: hidden; */
+  /* Removed to ensure dropdown is visible */
+}
+
+.session-item:hover,
+.session-item.active {
+  background: var(--bg-dark-700);
+  color: var(--text-100);
+}
+
+.menu-toggle-btn {
+  position: absolute;
+  right: 8px;
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-300);
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.session-item:hover .menu-toggle-btn {
+  opacity: 1;
+}
+
+.menu-toggle-btn:hover {
+  background: var(--bg-dark-600);
+  color: var(--text-100);
+}
+
+.session-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 24px;
+  /* Space for absolute menu toggle */
+}
+
+.session-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-dark-800);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 140px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  margin-top: 4px;
+}
+
+.session-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-200);
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.session-menu button:hover {
+  background: var(--bg-dark-700);
+  color: var(--text-100);
+}
+
+.session-menu button.delete:hover {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+}
+
+.rename-input {
+  background: var(--bg-dark-600);
+  border: 1px solid var(--accent);
+  color: var(--text-100);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 12px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
