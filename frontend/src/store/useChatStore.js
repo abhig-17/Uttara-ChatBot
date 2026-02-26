@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://uttara-chatbot.onrender.com/api';
 
 const STORAGE_KEY = 'uttara_ai_chats';
 
