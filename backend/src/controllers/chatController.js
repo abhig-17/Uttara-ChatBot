@@ -7,10 +7,12 @@ const sendMessage = async (req, res) => {
         if (!message) return res.status(400).json({ error: 'Message is required' });
 
         // messages for AI
-        const apiMessages = history.map(m => ({
-            role: m.role === 'assistant' ? 'assistant' : 'user',
-            content: m.content
-        }));
+        const apiMessages = Array.isArray(history) && history.length > 0
+            ? history.map(m => ({
+                role: m.role === 'assistant' ? 'assistant' : 'user',
+                content: m.content
+            }))
+            : [{ role: 'user', content: message }];
 
         // Generate AI response
         const aiResponse = await generateResponse(apiMessages);
